@@ -1,0 +1,37 @@
+:root {
+  --canvas: 247 249 252;
+  --surface: 255 255 255;
+  --elevated: 248 250 252;
+  --border: 218 220 224;
+  --ink: 32 33 36;
+  --muted: 95 99 104;
+  --brand: 26 115 232;
+  --brand-strong: 11 87 208;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  color: rgb(var(--ink));
+  background: rgb(var(--canvas));
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+.dark {
+  --canvas: 18 20 24;
+  --surface: 32 33 36;
+  --elevated: 40 42 47;
+  --border: 70 72 78;
+  --ink: 232 234 237;
+  --muted: 189 193 198;
+  --brand: 138 180 248;
+  --brand-strong: 168 199 250;
+}
+
+* { box-sizing: border-box; }
+html, body, #root { min-width: 320px; min-height: 100%; }
+body { margin: 0; min-height: 100vh; }
+button, input, textarea { font: inherit; }
+button { cursor: pointer; }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
