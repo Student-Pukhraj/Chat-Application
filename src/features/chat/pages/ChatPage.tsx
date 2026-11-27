@@ -40,13 +40,13 @@ export function ChatPage() {
     <main className="h-screen overflow-hidden bg-canvas text-ink">
       <div className="mx-auto flex h-full max-w-[1600px] gap-0 bg-surface shadow-panel lg:m-3 lg:h-[calc(100vh-24px)] lg:rounded-xl lg:border lg:border-border">
         <aside className="hidden w-16 shrink-0 flex-col items-center border-r border-border bg-elevated py-3 md:flex">
-          <div className="mb-5 grid h-9 w-9 place-items-center rounded-lg bg-brand text-sm font-bold text-white">GC</div>
+          <div className="mb-5 grid h-9 w-9 place-items-center rounded-lg bg-brand text-sm font-bold text-brand-foreground">GC</div>
           <nav className="flex flex-1 flex-col items-center gap-2" aria-label="Primary navigation">
-            <NavLink to="/chat" className={({ isActive }) => `grid h-10 w-10 place-items-center rounded-lg ${isActive ? 'bg-blue-100 text-brand' : 'text-muted hover:bg-surface'}`}><Home className="h-5 w-5" /></NavLink>
-            <NavLink to="/contacts" className={({ isActive }) => `grid h-10 w-10 place-items-center rounded-lg ${isActive ? 'bg-blue-100 text-brand' : 'text-muted hover:bg-surface'}`}><ContactRound className="h-5 w-5" /></NavLink>
-            <NavLink to="/notifications" className={({ isActive }) => `grid h-10 w-10 place-items-center rounded-lg ${isActive ? 'bg-blue-100 text-brand' : 'text-muted hover:bg-surface'}`}><Bell className="h-5 w-5" /></NavLink>
+            <NavLink to="/chat" className={({ isActive }) => `grid h-10 w-10 place-items-center rounded-lg ${isActive ? 'bg-brand/10 text-brand' : 'text-muted hover:bg-surface'}`}><Home className="h-5 w-5" /></NavLink>
+            <NavLink to="/contacts" className={({ isActive }) => `grid h-10 w-10 place-items-center rounded-lg ${isActive ? 'bg-brand/10 text-brand' : 'text-muted hover:bg-surface'}`}><ContactRound className="h-5 w-5" /></NavLink>
+            <NavLink to="/notifications" className={({ isActive }) => `grid h-10 w-10 place-items-center rounded-lg ${isActive ? 'bg-brand/10 text-brand' : 'text-muted hover:bg-surface'}`}><Bell className="h-5 w-5" /></NavLink>
           </nav>
-          <NavLink to="/settings" aria-label="Settings" className={({ isActive }) => `grid h-10 w-10 place-items-center rounded-lg ${isActive ? 'bg-blue-100 text-brand' : 'text-muted hover:bg-surface'}`}><Settings className="h-5 w-5" /></NavLink>
+          <NavLink to="/settings" aria-label="Settings" className={({ isActive }) => `grid h-10 w-10 place-items-center rounded-lg ${isActive ? 'bg-brand/10 text-brand' : 'text-muted hover:bg-surface'}`}><Settings className="h-5 w-5" /></NavLink>
         </aside>
 
         <aside className={`${mobileList ? 'flex' : 'hidden'} absolute inset-0 z-30 w-full flex-col border-r border-border bg-surface md:relative md:flex md:w-[310px] lg:w-[340px]`}>
@@ -57,9 +57,9 @@ export function ChatPage() {
           <div className="px-3 pb-3"><label className="relative block"><Search className="absolute left-3 top-3 h-4 w-4 text-muted" /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search conversations" className="h-10 w-full rounded-full border border-border bg-elevated pl-9 pr-3 text-sm outline-none focus:border-brand" /></label></div>
           <div className="flex-1 overflow-y-auto px-2 pb-3">
             {filtered.length === 0 ? <EmptyState title="No conversations" description="Try another search term." /> : filtered.map((item) => (
-              <button type="button" key={item.id} onClick={() => selectConversation(item.id)} className={`mb-1 flex w-full items-center gap-3 rounded-lg px-3 py-3 text-left ${item.id === selectedId ? 'bg-blue-50 dark:bg-elevated' : 'hover:bg-elevated'}`}>
+              <button type="button" key={item.id} onClick={() => selectConversation(item.id)} className={`mb-1 flex w-full items-center gap-3 rounded-lg px-3 py-3 text-left ${item.id === selectedId ? 'bg-brand/10' : 'hover:bg-elevated'}`}>
                 <Avatar initials={item.initials} color={item.avatarColor} online={item.online} />
-                <div className="min-w-0 flex-1"><div className="flex items-center justify-between gap-2"><p className="truncate text-sm font-semibold">{item.name}</p><span className="shrink-0 text-[11px] text-muted">{item.timestamp}</span></div><div className="mt-0.5 flex items-center justify-between gap-2"><p className="truncate text-xs text-muted">{item.lastMessage}</p>{item.unreadCount > 0 ? <span className="grid h-5 min-w-5 place-items-center rounded-full bg-brand px-1 text-[10px] text-white">{item.unreadCount}</span> : null}</div></div>
+                <div className="min-w-0 flex-1"><div className="flex items-center justify-between gap-2"><p className="truncate text-sm font-semibold">{item.name}</p><span className="shrink-0 text-[11px] text-muted">{item.timestamp}</span></div><div className="mt-0.5 flex items-center justify-between gap-2"><p className="truncate text-xs text-muted">{item.lastMessage}</p>{item.unreadCount > 0 ? <span className="grid h-5 min-w-5 place-items-center rounded-full bg-brand px-1 text-[10px] text-brand-foreground">{item.unreadCount}</span> : null}</div></div>
               </button>
             ))}
           </div>
@@ -80,7 +80,7 @@ export function ChatPage() {
               <div key={message.id} className={`flex ${message.sender === 'me' ? 'justify-end' : 'justify-start'}`}>
                 <div className={`max-w-[82%] sm:max-w-[70%] ${message.sender === 'me' ? 'items-end' : 'items-start'} flex flex-col`}>
                   {message.sender === 'other' ? <span className="mb-1 px-1 text-xs font-medium text-muted">{message.senderName}</span> : null}
-                  <div className={`rounded-2xl px-4 py-2.5 text-sm leading-6 ${message.sender === 'me' ? 'rounded-br-md bg-brand text-white' : 'rounded-bl-md bg-elevated text-ink'}`}>{message.text}</div>
+                  <div className={`rounded-2xl px-4 py-2.5 text-sm leading-6 ${message.sender === 'me' ? 'rounded-br-md bg-brand text-brand-foreground' : 'rounded-bl-md bg-elevated text-ink'}`}>{message.text}</div>
                   <span className="mt-1 px-1 text-[10px] text-muted">{message.timestamp}{message.status ? ` · ${message.status}` : ''}</span>
                 </div>
               </div>
@@ -92,7 +92,7 @@ export function ChatPage() {
               <button type="button" aria-label="Attach file" className="grid h-9 w-9 shrink-0 place-items-center rounded-full text-muted hover:bg-surface"><Paperclip className="h-4 w-4" /></button>
               <textarea value={draft} onChange={(event) => setDraft(event.target.value)} onKeyDown={(event) => { if (event.key === 'Enter' && !event.shiftKey) { event.preventDefault(); sendMessage() } }} rows={1} placeholder="Message" className="max-h-28 min-h-9 flex-1 resize-none bg-transparent px-1 py-2 text-sm outline-none" />
               <button type="button" aria-label="Add emoji" className="hidden h-9 w-9 shrink-0 place-items-center rounded-full text-muted hover:bg-surface sm:grid"><Smile className="h-4 w-4" /></button>
-              <button type="button" onClick={sendMessage} disabled={!draft.trim()} aria-label="Send message" className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand text-white disabled:opacity-40"><Send className="h-4 w-4" /></button>
+              <button type="button" onClick={sendMessage} disabled={!draft.trim()} aria-label="Send message" className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand text-brand-foreground disabled:opacity-40"><Send className="h-4 w-4" /></button>
             </div>
           </footer>
         </section>

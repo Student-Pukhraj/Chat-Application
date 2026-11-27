@@ -12,6 +12,7 @@ export default {
         muted: 'rgb(var(--muted) / <alpha-value>)',
         brand: 'rgb(var(--brand) / <alpha-value>)',
         'brand-strong': 'rgb(var(--brand-strong) / <alpha-value>)',
+        'brand-foreground': 'rgb(var(--brand-foreground) / <alpha-value>)',
       },
       boxShadow: { panel: '0 1px 3px rgba(60,64,67,.12), 0 1px 2px rgba(60,64,67,.08)' },
     },
