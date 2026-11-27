@@ -4,7 +4,7 @@ type ButtonProps = Readonly<ButtonHTMLAttributes<HTMLButtonElement> & { variant?
 
 export function Button({ variant = 'primary', className = '', type = 'button', ...props }: ButtonProps) {
   const variants = {
-    primary: 'bg-brand text-white hover:bg-brand-strong',
+    primary: 'bg-brand text-brand-foreground hover:bg-brand-strong',
     ghost: 'text-ink hover:bg-elevated',
     danger: 'bg-red-600 text-white hover:bg-red-700',
   }
