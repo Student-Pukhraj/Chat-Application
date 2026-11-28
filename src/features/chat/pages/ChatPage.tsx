@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { NavLink, useParams } from 'react-router-dom'
-import { Bell, ContactRound, Home, Menu, MoreVertical, Paperclip, Phone, Search, Send, Settings, Smile, Video, X } from 'lucide-react'
+import { Bell, ContactRound, Home, Menu, MoreVertical, Paperclip, Phone, Search, Send, Settings, ShieldCheck, Smile, Video, X } from 'lucide-react'
 import { Avatar } from '../../../components/ui/Avatar'
 import { EmptyState, LoadingState } from '../../../components/shared/States'
 import { mockConversations } from '../../conversations/services/mockConversations'
@@ -45,6 +45,7 @@ export function ChatPage() {
             <NavLink to="/chat" className={({ isActive }) => `grid h-10 w-10 place-items-center rounded-lg ${isActive ? 'bg-brand/10 text-brand' : 'text-muted hover:bg-surface'}`}><Home className="h-5 w-5" /></NavLink>
             <NavLink to="/contacts" className={({ isActive }) => `grid h-10 w-10 place-items-center rounded-lg ${isActive ? 'bg-brand/10 text-brand' : 'text-muted hover:bg-surface'}`}><ContactRound className="h-5 w-5" /></NavLink>
             <NavLink to="/notifications" className={({ isActive }) => `grid h-10 w-10 place-items-center rounded-lg ${isActive ? 'bg-brand/10 text-brand' : 'text-muted hover:bg-surface'}`}><Bell className="h-5 w-5" /></NavLink>
+            <NavLink to="/admin" aria-label="Admin dashboard" className={({ isActive }) => `grid h-10 w-10 place-items-center rounded-lg ${isActive ? 'bg-brand/10 text-brand' : 'text-muted hover:bg-surface'}`}><ShieldCheck className="h-5 w-5" /></NavLink>
           </nav>
           <NavLink to="/settings" aria-label="Settings" className={({ isActive }) => `grid h-10 w-10 place-items-center rounded-lg ${isActive ? 'bg-brand/10 text-brand' : 'text-muted hover:bg-surface'}`}><Settings className="h-5 w-5" /></NavLink>
         </aside>

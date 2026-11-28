@@ -5,6 +5,7 @@ import { ContactsPage } from '../../features/contacts/pages/ContactsPage'
 import { ProfilePage } from '../../features/profile/pages/ProfilePage'
 import { NotificationsPage } from '../../features/notifications/pages/NotificationsPage'
 import { SettingsPage } from '../../features/settings/pages/SettingsPage'
+import { AdminDashboardPage } from '../../features/admin/pages/AdminDashboardPage'
 
 export function AppRouter() {
   return (
@@ -18,6 +19,7 @@ export function AppRouter() {
       <Route path="/profile" element={<ProfilePage />} />
       <Route path="/notifications" element={<NotificationsPage />} />
       <Route path="/settings" element={<SettingsPage />} />
+      <Route path="/admin" element={<AdminDashboardPage />} />
       <Route path="*" element={<Navigate to="/chat" replace />} />
     </Routes>
   )
