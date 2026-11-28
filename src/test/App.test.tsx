@@ -9,4 +9,11 @@ describe('Google Chat app', () => {
     expect(screen.getByRole('heading', { name: 'Google Chat' })).toBeInTheDocument()
     expect(screen.getByRole('button', { name: 'Sign in' })).toBeInTheDocument()
   })
+
+  it('renders the platform admin dashboard at /admin', () => {
+    globalThis.history.pushState({}, '', '/admin')
+    render(<App />)
+    expect(screen.getByRole('heading', { name: 'Admin Dashboard' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Tenants' })).toBeInTheDocument()
+  })
 })
